@@ -1,0 +1,62 @@
+parameters:
+    librinfo:
+
+######  Organisms ##########
+
+        Librinfo\CRMBundle\Admin\OrganismAdminConcrete:
+            Sonata\AdminBundle\Show\ShowMapper:
+                remove: [email_history]
+                add:
+                    show_tab_emails:
+                        '':
+                            email_history:
+                                template: LibrinfoEmailCRMBundle:CRUD:show_field_emails_list.html.twig
+                                mapped: false
+                    _options:
+                        tabsOrder:
+                            - form_group_alert
+                            - form_group_general
+                            - form_group_contacts
+                            - show_tab_emails
+                            - default
+
+
+######  Email ##########
+
+        Librinfo\EmailBundle\Admin\EmailAdminConcrete:
+            Sonata\AdminBundle\Form\FormMapper:
+                add:
+                    form_group_general:
+                        '':
+                            organisms:
+                                type: sonata_type_model_autocomplete
+                                property: name
+                                multiple: true
+                                required: false
+                                _options:
+                                    admin_code: crm.organism
+                            positions:
+                                type: sonata_type_model_autocomplete
+                                property: [contact.name, organism.name]
+                                multiple: true
+                                required: false
+                            contacts:
+                                type: sonata_type_model_autocomplete
+                                property: [firstname, name]
+                                multiple: true
+                                required: false
+                                _options:
+                                    admin_code: crm.contact
+                            _options:
+                                fieldsOrder:
+                                    - field_from
+                                    - field_to
+                                    - field_cc
+                                    - field_bcc
+                                    - organisms
+                                    - positions
+                                    - contacts
+                                    - field_subject
+                                    - template
+                                    - content
+                                    - attachments

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="menu_crm">
+                <source>CRM</source>
+                <target>Relations Publiques</target>
+            </trans-unit>
+            <trans-unit id="menu_crm_admin">
+                <source>CRM Admin</source>
+                <target>Paramètres R.P.</target>
+            </trans-unit>
+            <trans-unit id="menu_app_admin">
+                <source>APP Admin</source>
+                <target>Paramètres Généraux</target>
+            </trans-unit>
+            <trans-unit id="menu_dev">
+                <source>DEV</source>
+                <target>DEV</target>
+            </trans-unit>
+            <trans-unit id="menu_taxonomy">
+                <source>Taxonomy</source>
+                <target>Taxonomie</target>
+            </trans-unit>            
+
+            <trans-unit id="dashboard">
+                <source>Dashboard</source>
+                <target>Tableau de Bord</target>
+            </trans-unit>
+            <trans-unit id="librinfo.link.dashboard">
+                <source>librinfo.link.dashboard</source>
+                <target>Tableau de Bord</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

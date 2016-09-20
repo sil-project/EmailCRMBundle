@@ -1,0 +1,45 @@
+{% extends "LibrinfoEmailBundle:CRUD:show_field_emails_list.html.twig" %}
+
+
+{% block send_new_email %}
+    {% dump(admin) %}
+    {% set isOrganism = object is instanceof('Librinfo\\CRMBundle\\Entity\\Organism') %}
+    <form method="GET" action="{{ path('admin_librinfo_email_email_create') }}" id='send-email-form'>
+        <label>Envoyer un email à</label>
+        <input type="hidden" name="force_user" value="1">
+        <input type="hidden" name="recipient_class" value="{{ admin.class }}">
+        <input type="hidden" name="from_admin" value="{{ admin.code }}">
+        <input type="hidden" name="from_id" value="{{ object.id }}">
+        <select id="new-email-recipients" name="recipient_ids" style="width: auto; height: auto;">
+            {% if object.email %}
+                <optgroup label="{{ isOrganism ? 'librinfo.label.organism'|trans : 'librinfo.label.contact'|trans }}">
+                <option data-recipient-class="{{ admin.class }}" value="{{ object.id }}" selected="selected">
+                    {{ object.name }} &lt;{{ object.email }}&gt;
+                </option>
+            {% endif %}
+
+            {% if object.positions|length %}
+                <optgroup label="{{ isOrganism ? 'librinfo.label.contacts'|trans : 'librinfo.label.organisms'|trans }}">
+                {% for position in object.positions if position.email %}
+                    <option data-recipient-class="Librinfo\CRMBundle\Entity\Position" value="{{ position.id }}">
+                        {{ position }} &lt;{{ position.email }}&gt;
+                    </option>
+                {% endfor %}
+            {% endif %}
+        </select>
+        <input type="submit" value="Créer" class="btn btn-small btn-primary">
+    </form>
+
+    <script>
+        $(function(){
+            $('#send-email-form').submit(function(){
+                var option = $(this).find('#new-email-recipients option:selected');
+                var class = option.data('recipient-class');
+                $(this).find('input[name=recipient_class]').val(class);
+                return true;
+            });
+        });
+    </script>
+{% endblock %}
+
+
