@@ -3,11 +3,7 @@
     "type": "symfony-bundle",
     "description": "CRM Bundle for Symfony with Email management",
     "require": {
-        "php": ">=5.4.0",
-        "symfony/symfony": "2.8.*",
-        "stof/doctrine-extensions-bundle": "^1.2",
-        "jeroendesloovere/vcard-bundle": "^1.2",
-        "sparkling/vat-bundle": "~0.1",
+        "php": ">=5.6.0",
         "libre-informatique/email-bundle": "dev-master",
         "libre-informatique/crm-bundle": "dev-master"
     },

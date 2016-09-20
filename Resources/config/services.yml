@@ -1,0 +1,4 @@
+services:
+#    librinfo_email_crm.example:
+#        class: Librinfo\EmailCRMBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
