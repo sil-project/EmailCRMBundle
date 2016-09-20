@@ -9,7 +9,7 @@
         "jeroendesloovere/vcard-bundle": "^1.2",
         "sparkling/vat-bundle": "~0.1",
         "libre-informatique/email-bundle": "dev-master",
-        "libre-informatique/crm-bundle": "dev-master",
+        "libre-informatique/crm-bundle": "dev-master"
     },
     "license":  "GPL-3.0",
     "keywords": ["e-venement", "libio", "sonata", "symfony", "CRM", "Email"],
