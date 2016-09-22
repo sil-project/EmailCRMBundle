@@ -1,4 +1,10 @@
 services:
-#    librinfo_email_crm.example:
-#        class: Librinfo\EmailCRMBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+
+### DOCTRINE EVENT LISTENERS ###
+
+    librinfo.emailcrm.listener.customrepositories:
+        class: Librinfo\EmailCRMBundle\EventListener\CustomRepositoriesListener
+        tags:
+            - { name: doctrine.event_subscriber }
+        calls:
+            - [setLogger,[@logger]]
