@@ -1,3 +1,1 @@
-librinfo_email_crm_homepage:
-    path:     /
-    defaults: { _controller: LibrinfoEmailCRMBundle:Default:index }
+
