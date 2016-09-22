@@ -9,13 +9,17 @@ New article coming soon about how we did it...
 
 ## Usage
 
-You have to implement two traits in your symfony AppBundle : HasEmailMessages and HasEmailRecipients
+You have to implement 4 "outer extension" traits in your symfony AppBundle : 
+* ContactExtension
+* PositionExtension
+* OrganismExtension
+* EmailExtension
 
 ```php
-// src/AppBundle/Entity/Traits/HasEmailMessages.php
-namespace AppBundle\Entity\Traits;
+// src/AppBundle/Entity/Extension/ContactExtension.php
+namespace AppBundle\Entity\Extension;
 
-trait HasEmailMessages
+trait ContactExtension
 {
     use \Librinfo\EmailCRMBundle\Entity\Traits\HasEmailMessages;
 }
@@ -23,14 +27,36 @@ trait HasEmailMessages
 ```
 
 ```php
-// src/AppBundle/Entity/Traits/HasEmailRecipients.php
-namespace AppBundle\Entity\Traits;
+// src/AppBundle/Entity/Extension/PositionExtension.php
+namespace AppBundle\Entity\Extension;
 
-trait HasEmailRecipients
+trait PositionExtension
 {
-    use \Librinfo\EmailCRMBundle\Entity\Traits\HasEmailRecipients;
+    use \Librinfo\EmailCRMBundle\Entity\Traits\HasEmailMessages;
+}
+
+```
+
+```php
+// src/AppBundle/Entity/Extension/OrganismExtension.php
+namespace AppBundle\Entity\Extension;
+
+trait OrganismExtension
+{
+    use \Librinfo\EmailCRMBundle\Entity\Traits\HasEmailMessages;
+}
+
+```
+
+```php
+// src/AppBundle/Entity/Extension/EmailExtension.php
+namespace AppBundle\Entity\Extension;
+
+trait EmailExtension
+{
+    use \Librinfo\EmailCRMBundle\Entity\Traits\HasEmailRecipient;
 }
 
 ```
 ... and now the entities of [SymfonyLibrinfoEmailBundle](https://github.com/libre-informatique/SymfonyLibrinfoEmailBundle) and 
-[SymfonyLibrinfoCRMBundle](https://github.com/libre-informatique/SymfonyLibrinfoCRMBundle) are linked !
+[SymfonyLibrinfoCRMBundle](https://github.com/libre-informatique/SymfonyLibrinfoCRMBundle) are linked from outer space!
