@@ -1,0 +1,7 @@
+Librinfo\CRMBundle\Entity\Contact:
+    type: entity
+
+    manyToMany:
+        emailMessages:
+            targetEntity: Librinfo\EmailBundle\Entity\Email
+            mappedBy: contacts
