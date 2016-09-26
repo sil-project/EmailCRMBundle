@@ -1,5 +1,6 @@
 Librinfo\CRMBundle\Entity\Contact:
     type: entity
+    repositoryClass: Librinfo\EmailCRMBundle\Entity\Repository\ContactRepository
 
     manyToMany:
         emailMessages:

@@ -2,9 +2,9 @@ services:
 
 ### DOCTRINE EVENT LISTENERS ###
 
-    librinfo.emailcrm.listener.customrepositories:
-        class: Librinfo\EmailCRMBundle\EventListener\CustomRepositoriesListener
-        tags:
-            - { name: doctrine.event_subscriber }
-        calls:
-            - [setLogger,[@logger]]
+#    librinfo.emailcrm.listener.customrepositories:
+#        class: Librinfo\EmailCRMBundle\EventListener\CustomRepositoriesListener
+#        tags:
+#            - { name: doctrine.event_subscriber }
+#        calls:
+#            - [setLogger,[@logger]]
