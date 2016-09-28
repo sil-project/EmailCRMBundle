@@ -12,6 +12,13 @@ parameters:
                             email_history:
                                 template: LibrinfoEmailCRMBundle:CRUD:show_field_emails_list.html.twig
                                 mapped: false
+#                    form_group_contacts:
+#                        '':
+#                            positions:
+#                                associated_property: organismDescription
+#                                label: librinfo.label.contacts
+##                                template: 'LibrinfoEmailCRMBundle:CRUD:show_field_organism_positions.html.twig'
+#                                cascade_validation: true
                     _options:
                         tabsOrder:
                             - form_group_alert
@@ -19,6 +26,40 @@ parameters:
                             - form_group_contacts
                             - show_tab_emails
                             - default
+
+
+######  Position ##########
+
+#        Librinfo\CRMBundle\Entity\Position:
+#            Sonata\AdminBundle\Show\ShowMapper:
+#                remove: [email]
+#                add: ~
+#                    '':
+#                        form_group_position:
+#                            contact:
+#                                admin_code: crm.contact
+#                            organism:
+#                                admin_code: crm.organism
+#                            department: ~
+#                            positionType.name: ~
+#                            label:
+#                                label: librinfo.label.position_label
+#                            email: ~
+#                            phone: ~
+#                            description: ~
+#                            _options:
+#                                fieldsOrder:
+#                                    - contact
+#                                    - organism
+#                                    - positionType
+#                                    - label
+#                                    - email
+#                                    - emailNpai
+#                                    - emailNoNewsletter
+#                                    - phone
+#                                    - circles
+#                                    - department
+#                                    - description
 
 
 ######  Email ##########
