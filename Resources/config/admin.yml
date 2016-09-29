@@ -12,7 +12,7 @@ services:
             - [ setTemplate, [edit, LibrinfoCRMBundle:OrganismAdmin:edit.html.twig]]
             - [ setTemplate, [show, LibrinfoCRMBundle:OrganismAdmin:show.html.twig]]
 
-    librinfo_email_crm.admin.contact:
+    librinfo_emailcrm.admin.contact:
         class: Librinfo\EmailCRMBundle\Admin\ContactAdminConcrete
         arguments: [~, Librinfo\CRMBundle\Entity\Contact, LibrinfoCRMBundle:ContactAdmin]
         tags:

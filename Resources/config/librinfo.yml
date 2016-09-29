@@ -28,40 +28,6 @@ parameters:
                             - default
 
 
-######  Position ##########
-
-#        Librinfo\CRMBundle\Entity\Position:
-#            Sonata\AdminBundle\Show\ShowMapper:
-#                remove: [email]
-#                add: ~
-#                    '':
-#                        form_group_position:
-#                            contact:
-#                                admin_code: crm.contact
-#                            organism:
-#                                admin_code: crm.organism
-#                            department: ~
-#                            positionType.name: ~
-#                            label:
-#                                label: librinfo.label.position_label
-#                            email: ~
-#                            phone: ~
-#                            description: ~
-#                            _options:
-#                                fieldsOrder:
-#                                    - contact
-#                                    - organism
-#                                    - positionType
-#                                    - label
-#                                    - email
-#                                    - emailNpai
-#                                    - emailNoNewsletter
-#                                    - phone
-#                                    - circles
-#                                    - department
-#                                    - description
-
-
 ######  Email ##########
 
         Librinfo\EmailBundle\Admin\EmailAdminConcrete:
