@@ -1,5 +1,5 @@
 services:
-    librinfo_email_crm.admin.organism:
+    librinfo_emailcrm.admin.organism:
         class: Librinfo\EmailCRMBundle\Admin\OrganismAdminConcrete
         arguments: [~, Librinfo\CRMBundle\Entity\Organism, LibrinfoCRMBundle:OrganismAdmin]
         tags:
