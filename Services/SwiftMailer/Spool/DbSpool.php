@@ -16,6 +16,6 @@ class DbSpool extends BaseDbSpool
         $decorator = new \Swift_Plugins_DecoratorPlugin($replacements);
         $transport->registerPlugin($decorator);
         
-        parent::flushQueue($transport, $failedRecipients);
+        return parent::flushQueue($transport, $failedRecipients);
     }
 }
