@@ -6,3 +6,7 @@ services:
     librinfo_email_crm.replacements:
         class: Librinfo\EmailCRMBundle\Services\SwiftMailer\DecoratorPlugin\Replacements
         arguments: [ @doctrine.orm.entity_manager ]
+        
+    swiftmailer.mailer.spool_mailer.spool.db:
+        class: Librinfo\EmailCRMBundle\Services\SwiftMailer\Spool\DbSpool
+        arguments: [ @doctrine.orm.entity_manager, %kernel.environment% ]
