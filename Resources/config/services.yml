@@ -1,10 +1,8 @@
 services:
-
-### DOCTRINE EVENT LISTENERS ###
-
-#    librinfo.emailcrm.listener.customrepositories:
-#        class: Librinfo\EmailCRMBundle\EventListener\CustomRepositoriesListener
-#        tags:
-#            - { name: doctrine.event_subscriber }
-#        calls:
-#            - [setLogger,[@logger]]
+    librinfo_email.sender:
+        class: Librinfo\EmailBundle\Services\Sender
+        arguments: [ @doctrine.orm.entity_manager, @librinfo_email.tracking, @librinfo_email.inline_attachments, @swiftmailer.mailer.direct_mailer, @swiftmailer.mailer.spool_mailer ]
+        
+    librinfo_email_crm.replacements:
+        class: Librinfo\EmailCRMBundle\Services\SwiftMailer\DecoratorPlugin\Replacements
+        arguments: [ @doctrine.orm.entity_manager ]
