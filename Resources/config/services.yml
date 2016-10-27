@@ -9,4 +9,4 @@ services:
         
     swiftmailer.mailer.spool_mailer.spool.db:
         class: Librinfo\EmailCRMBundle\Services\SwiftMailer\Spool\DbSpool
-        arguments: [ @doctrine.orm.entity_manager, %kernel.environment% ]
+        arguments: [ @router, @doctrine.orm.entity_manager, %kernel.environment% ]
