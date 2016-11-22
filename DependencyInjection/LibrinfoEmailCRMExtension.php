@@ -31,17 +31,10 @@ class LibrinfoEmailCRMExtension extends LibrinfoCoreExtension
             $loader->load('datafixtures.yml');
         }
 
-        $this->mergeParameter('librinfo', $container, __DIR__ . '/../Resources/config');
+        $this->mergeParameter('blast', $container, __DIR__ . '/../Resources/config');
 
         if (class_exists('\Librinfo\SecurityBundle\Configurator\SecurityConfigurator'))
             \Librinfo\SecurityBundle\Configurator\SecurityConfigurator::getInstance($container)->loadSecurityYml(__DIR__ . '/../Resources/config/security.yml');
 
-//        $configSonataAdmin = Yaml::parse(
-//            file_get_contents(__DIR__ . '/../Resources/config/bundles/sonata_admin.yml')
-//        );
-//        DefaultParameters::getInstance($container)
-//            ->defineDefaultConfiguration(
-//                $configSonataAdmin['default']
-//            );
     }
 }
