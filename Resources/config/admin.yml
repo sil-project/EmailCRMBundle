@@ -7,7 +7,7 @@ services:
                 manager_type: orm
                 group: Customers Relationship Management
                 label: librinfo.crm.organism_admin.label
-                label_translator_strategy: librinfo_core.label.strategy.librinfo
+                label_translator_strategy: blast_core.label.strategy.librinfo
         calls:
             - [ setTemplate, [edit, LibrinfoCRMBundle:OrganismAdmin:edit.html.twig]]
             - [ setTemplate, [show, LibrinfoCRMBundle:OrganismAdmin:show.html.twig]]
@@ -20,7 +20,7 @@ services:
                 manager_type: orm
                 group: Customers Relationship Management
                 label: librinfo.crm.contact_admin.label
-                label_translator_strategy: librinfo_core.label.strategy.librinfo
+                label_translator_strategy: blast_core.label.strategy.librinfo
         calls:
             - [ setTemplate, [edit, LibrinfoCRMBundle:ContactAdmin:edit.html.twig]]
             - [ setTemplate, [show, LibrinfoCRMBundle:ContactAdmin:show.html.twig]]

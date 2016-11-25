@@ -2,7 +2,7 @@
 
 namespace Librinfo\EmailCRMBundle\DependencyInjection;
 
-use Blast\CoreBundle\DependencyInjection\LibrinfoCoreExtension;
+use Blast\CoreBundle\DependencyInjection\BlastCoreExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class LibrinfoEmailCRMExtension extends LibrinfoCoreExtension
+class LibrinfoEmailCRMExtension extends BlastCoreExtension
 {
     /**
      * {@inheritdoc}
