@@ -5,7 +5,8 @@ parameters:
 
         Librinfo\CRMBundle\Admin\OrganismAdminConcrete:
             Sonata\AdminBundle\Show\ShowMapper:
-                remove: [email_history]
+                remove:
+                    email_history: ~
                 add:
                     show_tab_emails:
                         '':
