@@ -1,6 +1,6 @@
 services:
     librinfo_emailcrm.admin.organism:
-        class: Librinfo\EmailCRMBundle\Admin\OrganismAdminConcrete
+        class: Librinfo\EmailCRMBundle\Admin\OrganismAdmin
         arguments: [~, Librinfo\CRMBundle\Entity\Organism, LibrinfoCRMBundle:OrganismAdmin]
         tags:
             -   name: sonata.admin

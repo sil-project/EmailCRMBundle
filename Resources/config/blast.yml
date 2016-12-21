@@ -3,7 +3,7 @@ parameters:
 
 ######  Organisms ##########
 
-        Librinfo\CRMBundle\Admin\OrganismAdminConcrete:
+        Librinfo\CRMBundle\Admin\OrganismAdmin:
             Sonata\AdminBundle\Show\ShowMapper:
                 remove:
                     email_history: ~
