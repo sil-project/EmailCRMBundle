@@ -28,6 +28,25 @@ parameters:
                             - show_tab_emails
                             - default
 
+######  Contacts ##########
+
+        Librinfo\CRMBundle\Admin\ContactAdmin:
+            Sonata\AdminBundle\Show\ShowMapper:
+                remove:
+                    email_history: ~
+                add:
+                    show_tab_emails:
+                        '':
+                            email_history:
+                                template: LibrinfoEmailCRMBundle:CRUD:show_field_emails_list.html.twig
+                                mapped: false
+                    _options:
+                        tabsOrder:
+                            - form_group_alert
+                            - form_group_general
+                            - form_group_contacts
+                            - show_tab_emails
+                            - default
 
 ######  Email ##########
 
