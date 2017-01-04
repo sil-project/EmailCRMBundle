@@ -2,7 +2,6 @@ parameters:
     blast:
 
 ######  Organisms ##########
-
         Librinfo\CRMBundle\Admin\OrganismAdmin:
             Sonata\AdminBundle\Show\ShowMapper:
                 remove:
@@ -73,7 +72,7 @@ parameters:
                                 multiple: true
                                 required: false
                                 _options:
-                                    admin_code: crm.contact
+                                    admin_code: librinfo_emailcrm.admin.contact
                             _options:
                                 fieldsOrder:
                                     - field_from
@@ -87,3 +86,11 @@ parameters:
                                     - template
                                     - content
                                     - attachments
+            Sonata\AdminBundle\Datagrid\DatagridMapper:
+                add:
+                    contacts:
+                        type: doctrine_orm_model_autocomplete
+                        field_options:
+                            property: name
+                            multiple: true
+                        admin_code: librinfo_emailcrm.admin.contact
