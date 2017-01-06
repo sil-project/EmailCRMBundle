@@ -49,7 +49,7 @@ parameters:
            
 ######  Email ##########
 
-        Librinfo\EmailBundle\Admin\EmailAdminConcrete:
+        Librinfo\EmailBundle\Admin\EmailAdmin:
             Sonata\AdminBundle\Form\FormMapper:
                 add:
                     form_group_general:

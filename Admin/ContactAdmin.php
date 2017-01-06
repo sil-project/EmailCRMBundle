@@ -3,13 +3,13 @@
 namespace Librinfo\EmailCRMBundle\Admin;
 
 use Blast\CoreBundle\Admin\CoreAdmin;
-use Librinfo\CRMBundle\Admin\ContactAdminConcrete as BaseContactAdminConcrete;
+use Librinfo\CRMBundle\Admin\ContactAdmin as BaseContactAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class ContactAdminConcrete extends BaseContactAdminConcrete
+class ContactAdmin extends BaseContactAdmin
 {
     protected $baseRouteName = 'admin_librinfo_emailcrm_contact';
     protected $baseRoutePattern = 'librinfo/emailcrm/contact';

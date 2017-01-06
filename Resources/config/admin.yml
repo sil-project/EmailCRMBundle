@@ -13,7 +13,7 @@ services:
             - [ setTemplate, [show, LibrinfoCRMBundle:OrganismAdmin:show.html.twig]]
 
     librinfo_emailcrm.admin.contact:
-        class: Librinfo\EmailCRMBundle\Admin\ContactAdminConcrete
+        class: Librinfo\EmailCRMBundle\Admin\ContactAdmin
         arguments: [~, Librinfo\CRMBundle\Entity\Contact, LibrinfoCRMBundle:ContactAdmin]
         tags:
             -   name: sonata.admin
