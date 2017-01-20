@@ -1,6 +1,6 @@
 services:
     librinfo_email.sender:
-        class: Librinfo\EmailBundle\Services\Sender
+        class: Librinfo\EmailCRMBundle\Services\Sender
         arguments: [ @doctrine.orm.entity_manager, @librinfo_email.tracking, @librinfo_email.inline_attachments, @swiftmailer.mailer.direct_mailer, @swiftmailer.mailer.spool_mailer ]
         
     librinfo_email_crm.replacements:
