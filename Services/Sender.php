@@ -7,6 +7,61 @@ use Librinfo\EmailCRMBundle\Services\SwiftMailer\DecoratorPlugin\Replacements;
 
 class Sender extends BaseSender
 {
+    /**
+     * Sends an email
+     * 
+     * @param type Email $email the email to send
+     * @return int number of successfully sent emails
+     */
+    public function send($email)
+    {
+        $this->email = $email;
+        $this->attachments = $email->getAttachments();
+        $addresses = explode(';', $this->email->getFieldTo());
+        
+        foreach( $email->getPositions() as $position )
+        {
+            $name = sprintf(
+                    '<%s %s> ',
+                    $position->getContact()->getFirstName(),
+                    $position->getContact()->getName()
+                );
+            if( $position->getEmail() )
+                $addresses[] = $name . $position->getEmail();
+            else if( $position->getContact()->getEmail() )
+                $addresses[] = $name . $position->getContact->getEmail();
+            else
+                continue;
+        }       
+            
+        foreach( $email->getContacts() as $contact )
+            if( $contact->getEmail() ) 
+                $addresses[] = sprintf(
+                    '<%s %s> %s', 
+                    $contact->getFirstName(), 
+                    $contact->getName(), 
+                    $contact->getEmail()
+                );
+        
+        foreach( $email->getOrganisms() as $organism )
+            if( $organism->getEmail() ) 
+                $addresses[] = sprintf(
+                    '<%s> %s', 
+                    $organism->getName(), 
+                    $organism->getEmail()
+                );
+        
+        $this->needsSpool = count($addresses) > 1;
+
+        if( $this->email->getIsTest() )
+            return $this->directSend($this->email->getTestAdress());
+        
+        if( $this->needsSpool )
+            return $this->spoolSend($addresses);
+        
+        return $this->directSend($addresses);
+    }
+    
     protected function directSend($to, &$failedRecipients = null, $message = null)
     {
         $message = $this->setupSwiftMessage($to, $message);
