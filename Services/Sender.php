@@ -10,7 +10,7 @@ class Sender extends BaseSender
     /**
      * Sends an email
      * 
-     * @param type Email $email the email to send
+     * @param Email $email the email to send
      * @return int number of successfully sent emails
      */
     public function send($email)
