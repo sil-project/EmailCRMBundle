@@ -59,7 +59,7 @@ parameters:
                                 multiple: true
                                 required: false
                                 _options:
-                                    admin_code: crm.organism
+                                    admin_code: librinfo_crm.admin.organism
                             positions:
                                 type: blast_search_index_autocomplete
                                 multiple: true
@@ -102,7 +102,7 @@ parameters:
                             callback: Blast\BaseEntitiesBundle\Admin\SearchIndexEntityAdmin::searchIndexCallback
                     organisms:
                         type: doctrine_orm_model_autocomplete
-                        admin_code: crm.organism
+                        admin_code: librinfo_crm.admin.organism
                         multiple: true
                         field_options:
                             property: 'name'

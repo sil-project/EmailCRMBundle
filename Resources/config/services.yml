@@ -1,7 +1,12 @@
 services:
     librinfo_email.sender:
         class: Librinfo\EmailCRMBundle\Services\Sender
-        arguments: [ @doctrine.orm.entity_manager, @librinfo_email.tracking, @librinfo_email.inline_attachments, @swiftmailer.mailer.direct_mailer, @swiftmailer.mailer.spool_mailer ]
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @librinfo_email.tracking
+            - @librinfo_email.inline_attachments
+            - @swiftmailer.mailer.direct_mailer
+            - @swiftmailer.mailer.spool_mailer
         
     librinfo_email_crm.replacements:
         class: Librinfo\EmailCRMBundle\Services\SwiftMailer\DecoratorPlugin\Replacements
@@ -9,4 +14,7 @@ services:
         
     swiftmailer.mailer.spool_mailer.spool.db:
         class: Librinfo\EmailCRMBundle\Services\SwiftMailer\Spool\DbSpool
-        arguments: [ @router, @doctrine.orm.entity_manager, %kernel.environment% ]
+        arguments:
+            - @router
+            - @doctrine.orm.entity_manager
+            - %kernel.environment%
