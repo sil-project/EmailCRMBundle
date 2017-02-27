@@ -3,6 +3,8 @@
 namespace Librinfo\EmailCRMBundle\Services\SwiftMailer\Spool;
 
 use Librinfo\EmailBundle\Services\SwiftMailer\Spool\DbSpool as BaseDbSpool;
+use Librinfo\EmailBundle\Services\SwiftMailer\Spool\SpoolStatus;
+use Librinfo\EmailBundle\Services\InlineAttachments;
 use Librinfo\EmailCRMBundle\Services\SwiftMailer\DecoratorPlugin\Replacements;
 
 /**

@@ -26,9 +26,9 @@ class Sender extends BaseSender
             );
 
             if ( $position->getEmail() )
-                $addresses[$name] = $position->getEmail();
+                $addresses[$position->getEmail()] = $name;
             else if ( $position->getContact()->getEmail() )
-                $addresses[$name] = $position->getContact->getEmail();
+                $addresses[$position->getContact->getEmail()] = $name;
             else
                 continue;
         }
@@ -45,10 +45,10 @@ class Sender extends BaseSender
 
         foreach ( $email->getOrganisms() as $organism )
             if ( $organism->getEmail() )
-                $addresses[$organism->getName()] = $organism->getEmail();
+                $addresses[$organism->getEmail()] = $organism->getName();
 
         $this->needsSpool = count($addresses) > 1;
-
+                
         if( $this->email->getIsTest() )
             return $this->directSend($this->email->getTestAdress());
         
