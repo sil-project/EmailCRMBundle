@@ -46,7 +46,7 @@ parameters:
                             - form_group_contacts
                             - show_tab_emails
                             - default
-           
+
 ######  Email ##########
 
         Librinfo\EmailBundle\Admin\EmailAdmin:
@@ -55,17 +55,17 @@ parameters:
                     form_group_general:
                         '':
                             organisms:
-                                type: blast_search_index_autocomplete
+                                type: Blast\BaseEntitiesBundle\Form\Type\SearchIndexAutocompleteType
                                 multiple: true
                                 required: false
                                 _options:
                                     admin_code: librinfo_crm.admin.organism
                             positions:
-                                type: blast_search_index_autocomplete
+                                type: Blast\BaseEntitiesBundle\Form\Type\SearchIndexAutocompleteType
                                 multiple: true
                                 required: false
                             contacts:
-                                type: blast_search_index_autocomplete
+                                type: Blast\BaseEntitiesBundle\Form\Type\SearchIndexAutocompleteType
                                 multiple: true
                                 required: false
                                 _options:
