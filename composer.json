@@ -3,9 +3,9 @@
     "type": "symfony-bundle",
     "description": "CRM Bundle for Symfony with Email management",
     "require": {
-        "blast-project/outer-extension-bundle": "dev-sf3.2",
-        "libre-informatique/email-bundle": "dev-sf3.2",
-        "libre-informatique/crm-bundle": "dev-sf3.2"
+        "blast-project/outer-extension-bundle": "dev-master",
+        "libre-informatique/email-bundle": "dev-master",
+        "libre-informatique/crm-bundle": "dev-master"
     },
     "license":  "GPL-3.0",
     "keywords": ["e-venement", "libio", "sonata", "symfony", "CRM", "Email"],
