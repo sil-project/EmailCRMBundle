@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "CRM Bundle for Symfony with Email management",
     "require": {
-        "blast-project/outer-extension-bundle": "dev-master",
+        "blast-project/blast": "dev-master",
         "libre-informatique/email-bundle": "dev-master",
         "libre-informatique/crm-bundle": "dev-master"
     },
