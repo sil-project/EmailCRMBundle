@@ -12,38 +12,10 @@ parameters:
                             email_history:
                                 template: LibrinfoEmailCRMBundle:CRUD:show_field_emails_list.html.twig
                                 mapped: false
-#                    form_group_contacts:
-#                        '':
-#                            positions:
-#                                associated_property: organismDescription
-#                                label: librinfo.label.contacts
-##                                template: 'LibrinfoEmailCRMBundle:CRUD:show_field_organism_positions.html.twig'
-#                                cascade_validation: true
                     _options:
                         tabsOrder:
                             - form_group_alert
                             - form_group_general
-                            - form_group_contacts
-                            - show_tab_emails
-                            - default
-
-######  Contacts ##########
-
-        Librinfo\CRMBundle\Admin\ContactAdmin:
-            Sonata\AdminBundle\Show\ShowMapper:
-                remove:
-                    email_history: ~
-                add:
-                    show_tab_emails:
-                        '':
-                            email_history:
-                                template: LibrinfoEmailCRMBundle:CRUD:show_field_emails_list.html.twig
-                                mapped: false
-                    _options:
-                        tabsOrder:
-                            - form_group_alert
-                            - form_group_general
-                            - form_group_contacts
                             - show_tab_emails
                             - default
 
@@ -64,12 +36,6 @@ parameters:
                                 type: Blast\BaseEntitiesBundle\Form\Type\SearchIndexAutocompleteType
                                 multiple: true
                                 required: false
-                            contacts:
-                                type: Blast\BaseEntitiesBundle\Form\Type\SearchIndexAutocompleteType
-                                multiple: true
-                                required: false
-                                _options:
-                                    admin_code: librinfo_emailcrm.admin.contact
                             _options:
                                 fieldsOrder:
                                     - field_from
@@ -78,21 +44,12 @@ parameters:
                                     - field_bcc
                                     - organisms
                                     - positions
-                                    - contacts
                                     - field_subject
                                     - template
                                     - content
                                     - attachments
             Sonata\AdminBundle\Datagrid\DatagridMapper:
                 add:
-                    contacts:
-                        admin_code: librinfo_emailcrm.admin.contact
-                        type: doctrine_orm_model_autocomplete
-                        multiple: true
-                        field_options:
-                            property: name
-                            admin_code: librinfo_email.admin.email
-                            callback: Blast\BaseEntitiesBundle\Admin\SearchIndexEntityAdmin::searchIndexCallback
                     positions:
                         type: doctrine_orm_model_autocomplete
                         multiple: true

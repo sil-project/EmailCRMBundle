@@ -11,16 +11,3 @@ services:
         calls:
             - [ setTemplate, [edit, LibrinfoCRMBundle:OrganismAdmin:edit.html.twig]]
             - [ setTemplate, [show, LibrinfoCRMBundle:OrganismAdmin:show.html.twig]]
-
-    librinfo_emailcrm.admin.contact:
-        class: Librinfo\EmailCRMBundle\Admin\ContactAdmin
-        arguments: [~, Librinfo\CRMBundle\Entity\Contact, LibrinfoCRMBundle:ContactAdmin]
-        tags:
-            -   name: sonata.admin
-                manager_type: orm
-                group: Customers Relationship Management
-                label: librinfo.crm.contact_admin.label
-                label_translator_strategy: blast_core.label.strategy.librinfo
-        calls:
-            - [ setTemplate, [edit, LibrinfoCRMBundle:ContactAdmin:edit.html.twig]]
-            - [ setTemplate, [show, LibrinfoCRMBundle:ContactAdmin:show.html.twig]]

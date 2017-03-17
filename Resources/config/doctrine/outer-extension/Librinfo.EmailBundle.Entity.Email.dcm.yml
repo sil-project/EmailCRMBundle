@@ -2,9 +2,6 @@ Librinfo\EmailBundle\Entity\Email:
     type: entity
 
     manyToMany:
-        contacts:
-            targetEntity: Librinfo\CRMBundle\Entity\Contact
-            inversedBy: emailMessages
         positions:
             targetEntity: Librinfo\CRMBundle\Entity\Position
             inversedBy: emailMessages

@@ -58,31 +58,33 @@ class DbSpool extends BaseDbSpool
             foreach ( $email->getPositions() as $position )
             {
                 $name = sprintf(
-                        '%s %s', $position->getContact()->getFirstName(), $position->getContact()->getName()
+                        '%s %s', $position->getIndividual()->getFirstName(), $position->getIndividual()->getName()
                 );
 
                 if ( $position->getEmail() )
                     $addresses[$name] = $position->getEmail();
-                else if ( $position->getContact()->getEmail() )
-                    $addresses[$name] = $position->getContact->getEmail();
+                else if ( $position->getIndividual()->getEmail() )
+                    $addresses[$name] = $position->getIndividual->getEmail();
                 else
                     continue;
             }
-
-            foreach ( $email->getContacts() as $contact )
-                if ( $contact->getEmail() )
-                {
-                    $name = sprintf(
-                            '%s %s', $contact->getFirstName(), $contact->getName()
-                    );
-                
-                    $addresses[$name] = $contact->getEmail();
-                }
                 
             foreach ( $email->getOrganisms() as $organism )
                 if ( $organism->getEmail() )
-                    $addresses[$organism->getName()] = $organism->getEmail();
-
+                {
+                    if( $organism->isIndividual() )
+                    {
+                        $name = sprintf(
+                            '%s %s', $organism->getFirstName(), $organism->getName()
+                        );
+                        
+                        $addresses[$name] = $organism->getEmail();
+                    }else
+                    {
+                        $addresses[$organism->getName()] = $organism->getEmail();
+                    }
+                }
+                    
             foreach ($addresses as $address)
             {               
                 $message->setTo(trim($address));

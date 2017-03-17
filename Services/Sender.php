@@ -18,57 +18,59 @@ class Sender extends BaseSender
         $this->email = $email;
         $this->attachments = $email->getAttachments();
         $addresses = explode(';', $this->email->getFieldTo());
-        
+
         foreach ( $email->getPositions() as $position )
         {
             $name = sprintf(
-                '%s %s', $position->getContact()->getFirstName(), $position->getContact()->getName()
+                    '%s %s', $position->getIndividual()->getFirstName(), $position->getIndividual()->getName()
             );
 
             if ( $position->getEmail() )
-                $addresses[$position->getEmail()] = $name;
-            else if ( $position->getContact()->getEmail() )
-                $addresses[$position->getContact->getEmail()] = $name;
+                $addresses[$name] = $position->getEmail();
+            else if ( $position->getIndividual()->getEmail() )
+                $addresses[$name] = $position->getIndividual->getEmail();
             else
                 continue;
         }
 
-        foreach ( $email->getContacts() as $contact )
-            if ( $contact->getEmail() )
-            {
-                $name = sprintf(
-                    '%s %s', $contact->getFirstName(), $contact->getName()
-                );
-
-                $addresses[$name] = $contact->getEmail();
-            }
-
         foreach ( $email->getOrganisms() as $organism )
             if ( $organism->getEmail() )
-                $addresses[$organism->getEmail()] = $organism->getName();
+            {
+                if ( $organism->isIndividual() )
+                {
+                    $name = sprintf(
+                        '%s %s', $organism->getFirstName(), $organism->getName()
+                    );
+
+                    $addresses[$name] = $organism->getEmail();
+                } else
+                {
+                    $addresses[$organism->getName()] = $organism->getEmail();
+                }
+            }
 
         $this->needsSpool = count($addresses) > 1;
-                
-        if( $this->email->getIsTest() )
+
+        if ( $this->email->getIsTest() )
             return $this->directSend($this->email->getTestAdress());
-        
-        if( $this->needsSpool )
+
+        if ( $this->needsSpool )
             return $this->spoolSend($addresses);
-        
+
         return $this->directSend($addresses);
     }
-    
+
     protected function directSend($to, &$failedRecipients = null, $message = null)
     {
         $message = $this->setupSwiftMessage($to, $message);
         $replacements = new Replacements($this->manager);
         $decorator = new \Swift_Plugins_DecoratorPlugin($replacements);
-        
+
         $this->directMailer->registerPlugin($decorator);
         $sent = $this->directMailer->send($message, $failedRecipients);
         $this->updateEmailEntity($message);
 
         return $sent;
     }
-    
+
 }

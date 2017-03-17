@@ -24,15 +24,21 @@ class Replacements implements \Swift_Plugins_Decorator_Replacements
      */
     public function getReplacementsFor($address)
     {
-        $contact = $this->manager->getRepository("LibrinfoCRMBundle:Contact")->findOneBy(array("email" => $address));
-
-        if ($contact)
+        $organism = $this->manager->getRepository("LibrinfoCRMBundle:Organism")->findOneBy(array("email" => $address));
+        
+        
+        if ($organism)
         {
-            return array(
-                '{prenom}' => $contact->getFirstName(),
-                '{nom}' => $contact->getName(),
-                '{titre}' => $contact->getTitle()
-            );
+            if( $organism->isIndividual() )
+                return array(
+                    '{prenom}' => $organism->getFirstName(),
+                    '{nom}' => $organism->getLastName(),
+                    '{titre}' => $organism->getTitle()
+                );
+            else
+                return array(
+                    '{nom}' => $organism->getName()
+                );
         }
     }
 
