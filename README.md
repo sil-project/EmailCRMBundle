@@ -1,4 +1,14 @@
 # SymfonyLibrinfoEmailCRMBundle
+
+
+[![Build Status](https://travis-ci.org/libre-informatique/EmailCRMBundle.svg?branch=master)](https://travis-ci.org/libre-informatique/EmailCRMBundle)
+[![Coverage Status](https://coveralls.io/repos/github/libre-informatique/EmailCRMBundle/badge.svg?branch=master)](https://coveralls.io/github/libre-informatique/EmailCRMBundle?branch=master)
+[![License](https://img.shields.io/github/license/libre-informatique/EmailCRMBundle.svg?style=flat-square)](./LICENCE.md)
+
+[![Latest Stable Version](https://poser.pugx.org/libre-informatique/email-crm-bundle/v/stable)](https://packagist.org/packages/libre-informatique/email-crm-bundle)
+[![Latest Unstable Version](https://poser.pugx.org/libre-informatique/email-crm-bundle/v/unstable)](https://packagist.org/packages/libre-informatique/email-crm-bundle)
+[![Total Downloads](https://poser.pugx.org/libre-informatique/email-crm-bundle/downloads)](https://packagist.org/packages/libre-informatique/email-crm-bundle)
+
 CRM bundle for Symfony with Email management
 
 This bundle leverages the full potential of both [SymfonyLibrinfoEmailBundle](https://github.com/libre-informatique/SymfonyLibrinfoEmailBundle) and [SymfonyLibrinfoCRMBundle](https://github.com/libre-informatique/SymfonyLibrinfoCRMBundle)
