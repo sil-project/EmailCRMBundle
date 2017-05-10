@@ -1,7 +1,10 @@
 parameters:
     blast:
 
-######  Organisms ##########
+############
+# ORGANISM
+############
+
         Librinfo\CRMBundle\Admin\OrganismAdmin:
             Sonata\AdminBundle\Show\ShowMapper:
                 remove:
@@ -22,7 +25,9 @@ parameters:
                             - show_tab_emails
                             - form_group_specifics
 
-######  Email ##########
+#########
+# EMAIL
+#########
 
         Librinfo\EmailBundle\Admin\EmailAdmin:
             Sonata\AdminBundle\Form\FormMapper:
