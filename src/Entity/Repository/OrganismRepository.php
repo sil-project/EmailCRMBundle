@@ -18,7 +18,7 @@ class OrganismRepository extends BaseOrganismRepository
             ->leftJoin ('e.positions', 'pos')
             ->where('org.id = :id')
             ->orWhere($qb->expr()->andX(
-                $qb->expr()->eq('pos.individual', ':id'),
+                $qb->expr()->eq('pos.organism', ':id'),
                 $qb->expr()->isNotNull('pos.id')))
             ->setParameter('id', $id)
         ;

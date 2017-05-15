@@ -1,10 +1,7 @@
 parameters:
     blast:
 
-############
-# ORGANISM
-############
-
+######  Organisms ##########
         Librinfo\CRMBundle\Admin\OrganismAdmin:
             Sonata\AdminBundle\Show\ShowMapper:
                 remove:
@@ -17,17 +14,12 @@ parameters:
                                 mapped: false
                     _options:
                         tabsOrder:
-                            - show_tab_general
-                            - show_tab_phones
-                            - show_tab_addresses
-                            - show_tab_individuals
-                            - show_tab_info
+                            - form_group_alert
+                            - form_group_general
                             - show_tab_emails
-                            - form_group_specifics
+                            - default
 
-#########
-# EMAIL
-#########
+######  Email ##########
 
         Librinfo\EmailBundle\Admin\EmailAdmin:
             Sonata\AdminBundle\Form\FormMapper:
@@ -40,7 +32,7 @@ parameters:
                                 required: false
                                 _options:
                                     admin_code: librinfo_crm.admin.organism
-                            individuals:
+                            positions:
                                 type: Blast\BaseEntitiesBundle\Form\Type\SearchIndexAutocompleteType
                                 multiple: true
                                 required: false
@@ -51,14 +43,14 @@ parameters:
                                     - field_cc
                                     - field_bcc
                                     - organisms
-                                    - individuals
+                                    - positions
                                     - field_subject
                                     - template
                                     - content
                                     - attachments
             Sonata\AdminBundle\Datagrid\DatagridMapper:
                 add:
-                    individuals:
+                    positions:
                         type: doctrine_orm_model_autocomplete
                         multiple: true
                         field_options:
