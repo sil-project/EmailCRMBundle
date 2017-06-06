@@ -43,7 +43,7 @@ parameters:
                             individuals:
                                 type: Blast\BaseEntitiesBundle\Form\Type\SearchIndexAutocompleteType
                                 multiple: true
-                                required: false
+                                required: false                                    
                             _options:
                                 fieldsOrder:
                                     - field_from
@@ -59,12 +59,16 @@ parameters:
             Sonata\AdminBundle\Datagrid\DatagridMapper:
                 add:
                     individuals:
-                        type: doctrine_orm_model_autocomplete
-                        multiple: true
-                        field_options:
-                            property: name
-                            admin_code: librinfo_email.admin.email
-                            callback: Blast\BaseEntitiesBundle\Admin\SearchIndexEntityAdmin::searchIndexCallback
+                        type: doctrine_orm_callback
+                        callback: Blast\BaseEntitiesBundle\Admin\SearchIndexEntityAdmin::searchIndexDoctrineORMCallback
+                        field_type: text
+#                    individuals:
+#                        type: doctrine_orm_model_autocomplete
+#                        multiple: true
+#                        field_options:
+#                            property: name
+#                            admin_code: librinfo_email.admin.email
+#                            callback: Blast\BaseEntitiesBundle\Admin\SearchIndexEntityAdmin::searchIndexCallback
                     organisms:
                         type: doctrine_orm_model_autocomplete
                         admin_code: librinfo_crm.admin.organism
