@@ -7,6 +7,7 @@ use Librinfo\EmailCRMBundle\Services\SwiftMailer\DecoratorPlugin\Replacements;
 
 class Sender extends BaseSender
 {
+
     /**
      * Sends an email
      * 
@@ -19,42 +20,47 @@ class Sender extends BaseSender
         $this->attachments = $email->getAttachments();
         $addresses = explode(';', $this->email->getFieldTo());
 
-        foreach ( $email->getPositions() as $position )
-        {
+        if ($email->getPositions() === null) {
+            $email->initPositions();
+        }
+
+        foreach ($email->getPositions() as $position) {
             $name = sprintf(
-                    '%s %s', $position->getIndividual()->getFirstName(), $position->getIndividual()->getName()
+                '%s %s', $position->getIndividual()->getFirstName(), $position->getIndividual()->getName()
             );
 
-            if ( $position->getEmail() )
+            if ($position->getEmail())
                 $addresses[$name] = $position->getEmail();
-            else if ( $position->getIndividual()->getEmail() )
+            else if ($position->getIndividual()->getEmail())
                 $addresses[$name] = $position->getIndividual->getEmail();
             else
                 continue;
         }
+        
+        if ($email->getOrganisms() === null) {
+            $email->initOrganisms();
+        }
 
-        foreach ( $email->getOrganisms() as $organism )
-            if ( $organism->getEmail() )
-            {
-                if ( $organism->isIndividual() )
-                {
+        foreach ($email->getOrganisms() as $organism) {
+            if ($organism->getEmail()) {
+                if ($organism->isIndividual()) {
                     $name = sprintf(
                         '%s %s', $organism->getFirstName(), $organism->getName()
                     );
 
                     $addresses[$name] = $organism->getEmail();
-                } else
-                {
+                } else {
                     $addresses[$organism->getName()] = $organism->getEmail();
                 }
             }
+        }
 
         $this->needsSpool = count($addresses) > 1;
 
-        if ( $this->email->getIsTest() )
-            return $this->directSend($this->email->getTestAdress());
+        if ($this->email->getIsTest())
+            return $this->directSend($this->email->getTestAddress());
 
-        if ( $this->needsSpool )
+        if ($this->needsSpool)
             return $this->spoolSend($addresses);
 
         return $this->directSend($addresses);
