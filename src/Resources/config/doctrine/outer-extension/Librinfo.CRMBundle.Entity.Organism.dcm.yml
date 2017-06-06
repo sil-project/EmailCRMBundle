@@ -5,4 +5,4 @@ Librinfo\CRMBundle\Entity\Organism:
     manyToMany:
         emailMessages:
             targetEntity: Librinfo\EmailBundle\Entity\Email
-            mappedBy: organisms
+            mappedBy: organizations

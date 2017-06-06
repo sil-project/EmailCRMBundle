@@ -59,21 +59,18 @@ parameters:
             Sonata\AdminBundle\Datagrid\DatagridMapper:
                 add:
                     individuals:
-                        type: doctrine_orm_callback
-                        callback: Blast\BaseEntitiesBundle\Admin\SearchIndexEntityAdmin::searchIndexDoctrineORMCallback
-                        field_type: text
-#                    individuals:
-#                        type: doctrine_orm_model_autocomplete
-#                        multiple: true
-#                        field_options:
-#                            property: name
-#                            admin_code: librinfo_email.admin.email
-#                            callback: Blast\BaseEntitiesBundle\Admin\SearchIndexEntityAdmin::searchIndexCallback
-                    organisms:
                         type: doctrine_orm_model_autocomplete
                         admin_code: librinfo_crm.admin.organism
                         multiple: true
                         field_options:
-                            property: 'name'
+                            property: label
                             admin_code: librinfo_email.admin.email
-                            callback: Blast\BaseEntitiesBundle\Admin\SearchIndexEntityAdmin::searchIndexCallback
+                            callback: Librinfo\CRMBundle\Admin\PositionAdmin::individualsCallback
+                    organizations:
+                        type: doctrine_orm_model_autocomplete
+                        admin_code: librinfo_crm.admin.organism
+                        multiple: true
+                        field_options:
+                            property: title
+                            admin_code: librinfo_email.admin.email
+                            callback: Librinfo\CRMBundle\Admin\PositionAdmin::organizationsCallback

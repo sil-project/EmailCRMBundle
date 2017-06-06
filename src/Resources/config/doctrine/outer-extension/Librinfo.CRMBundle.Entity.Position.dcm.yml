@@ -4,4 +4,4 @@ Librinfo\CRMBundle\Entity\Position:
     manyToMany:
         emailMessages:
             targetEntity: Librinfo\EmailBundle\Entity\Email
-            mappedBy: positions
+            mappedBy: individuals

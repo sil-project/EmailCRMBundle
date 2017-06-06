@@ -2,9 +2,9 @@ Librinfo\EmailBundle\Entity\Email:
     type: entity
 
     manyToMany:
-        positions:
+        individuals:
             targetEntity: Librinfo\CRMBundle\Entity\Position
             inversedBy: emailMessages
-        organisms:
+        organizations:
             targetEntity: Librinfo\CRMBundle\Entity\Organism
             inversedBy: emailMessages
