@@ -14,8 +14,8 @@ class OrganismRepository extends BaseOrganismRepository
         $qb = $this->getEntityManager()->createQueryBuilder('e');
         $qb->select('e')
             ->from('LibrinfoEmailBundle:Email', 'e')
-            ->leftJoin ('e.organisms', 'org')
-            ->leftJoin ('e.positions', 'pos')
+            ->leftJoin ('e.organizations', 'org')
+            ->leftJoin ('e.individuals', 'pos')
             ->where('org.id = :id')
             ->orWhere($qb->expr()->andX(
                 $qb->expr()->eq('pos.individual', ':id'),
