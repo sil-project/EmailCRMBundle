@@ -1,5 +1,15 @@
 # Change Log
 
+## [0.4.3](https://github.com/libre-informatique/EmailCRMBundle/tree/0.4.3) (2017-06-13)
+[Full Changelog](https://github.com/libre-informatique/EmailCRMBundle/compare/0.4.2...0.4.3)
+
+**Merged pull requests:**
+
+- DevKit updates for EmailCRMBundle [\#8](https://github.com/libre-informatique/EmailCRMBundle/pull/8) ([BlastCI](https://github.com/BlastCI))
+- DevKit updates for EmailCRMBundle [\#7](https://github.com/libre-informatique/EmailCRMBundle/pull/7) ([BlastCI](https://github.com/BlastCI))
+- DevKit updates for EmailCRMBundle [\#6](https://github.com/libre-informatique/EmailCRMBundle/pull/6) ([BlastCI](https://github.com/BlastCI))
+- DevKit updates for EmailCRMBundle [\#4](https://github.com/libre-informatique/EmailCRMBundle/pull/4) ([BlastCI](https://github.com/BlastCI))
+
 ## [0.4.2](https://github.com/libre-informatique/EmailCRMBundle/tree/0.4.2) (2017-05-05)
 [Full Changelog](https://github.com/libre-informatique/EmailCRMBundle/compare/0.2...0.4.2)
 
