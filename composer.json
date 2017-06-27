@@ -5,13 +5,13 @@
     "require": {
 	"php": ">=5.6",
 	"symfony/symfony": ">=3.2",
-	"blast-project/core-bundle" : "dev-wip-lisem",
-        "blast-project/base-entities-bundle"  : "dev-wip-lisem",
-	"blast-project/outer-extension-bundle": "dev-wip-lisem",
-        "blast-project/utils-bundle": "dev-wip-lisem",
-        "libre-informatique/media-bundle": "dev-wip-lisem",
-        "libre-informatique/email-bundle": "dev-wip-lisem",
-        "libre-informatique/crm-bundle": "dev-wip-lisem"
+	"blast-project/core-bundle" : ">=0.4",
+        "blast-project/base-entities-bundle"  : ">=0.4",
+	"blast-project/outer-extension-bundle": ">=0.4",
+        "blast-project/utils-bundle": ">=0.4",
+        "libre-informatique/media-bundle": ">=0.4",
+        "libre-informatique/email-bundle": ">=0.4",
+        "libre-informatique/crm-bundle": ">=0.4"
     },
     "require-dev": {
 	"symfony/phpunit-bridge": ">=3.2"
