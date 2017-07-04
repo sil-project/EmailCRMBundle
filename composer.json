@@ -44,8 +44,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Librinfo\\EmailCRMBundle\\": "src/",
-            "Librinfo\\EmailCRMBundle\\Tests\\": "tests/"
+            "Librinfo\\EmailCRMBundle\\": "src/"
         }
     }
 }
