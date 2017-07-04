@@ -1,5 +1,15 @@
 <?php
 
+/*
+ * This file is part of the Blast Project package.
+ *
+ * Copyright (C) 2015-2017 Libre Informatique
+ *
+ * This file is licenced under the GNU LGPL v3.
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace Librinfo\EmailCRMBundle\Services;
 
 use Librinfo\EmailBundle\Services\Sender as BaseSender;
@@ -7,11 +17,11 @@ use Librinfo\EmailCRMBundle\Services\SwiftMailer\DecoratorPlugin\Replacements;
 
 class Sender extends BaseSender
 {
-
     /**
-     * Sends an email
-     * 
+     * Sends an email.
+     *
      * @param Email $email the email to send
+     *
      * @return int number of successfully sent emails
      */
     public function send($email)
@@ -29,14 +39,15 @@ class Sender extends BaseSender
                 '%s %s', $position->getIndividual()->getFirstName(), $position->getIndividual()->getName()
             );
 
-            if ($position->getEmail())
+            if ($position->getEmail()) {
                 $addresses[$name] = $position->getEmail();
-            else if ($position->getIndividual()->getEmail())
+            } elseif ($position->getIndividual()->getEmail()) {
                 $addresses[$name] = $position->getIndividual->getEmail();
-            else
+            } else {
                 continue;
+            }
         }
-        
+
         if ($email->getOrganisms() === null) {
             $email->initOrganisms();
         }
@@ -57,11 +68,13 @@ class Sender extends BaseSender
 
         $this->needsSpool = count($addresses) > 1;
 
-        if ($this->email->getIsTest())
+        if ($this->email->getIsTest()) {
             return $this->directSend($this->email->getTestAddress());
+        }
 
-        if ($this->needsSpool)
+        if ($this->needsSpool) {
             return $this->spoolSend($addresses);
+        }
 
         return $this->directSend($addresses);
     }
@@ -78,5 +91,4 @@ class Sender extends BaseSender
 
         return $sent;
     }
-
 }

@@ -1,12 +1,21 @@
 <?php
 
+/*
+ * This file is part of the Blast Project package.
+ *
+ * Copyright (C) 2015-2017 Libre Informatique
+ *
+ * This file is licenced under the GNU LGPL v3.
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace Librinfo\EmailCRMBundle\Entity\OuterExtension\LibrinfoEmailBundle;
 
 use Doctrine\Common\Collections\Collection;
 
 trait EmailExtension
 {
-
     /**
      * @var Collection
      */
@@ -18,7 +27,7 @@ trait EmailExtension
     protected $organizations;
 
     /**
-     * @return Collection 
+     * @return Collection
      */
     public function getIndividuals()
     {
@@ -27,11 +36,13 @@ trait EmailExtension
 
     /**
      * @param Collection $individuals
+     *
      * @return $this
      */
     public function setIndividuals($individuals)
     {
         $this->individual = $individuals;
+
         return $this;
     }
 
@@ -45,12 +56,13 @@ trait EmailExtension
 
     /**
      * @param Collection $organizations
+     *
      * @return $this
      */
     public function setOrganizations($organizations)
     {
         $this->organizations = $organizations;
+
         return $this;
     }
-
 }

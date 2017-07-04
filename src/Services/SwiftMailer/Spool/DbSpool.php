@@ -1,5 +1,15 @@
 <?php
 
+/*
+ * This file is part of the Blast Project package.
+ *
+ * Copyright (C) 2015-2017 Libre Informatique
+ *
+ * This file is licenced under the GNU LGPL v3.
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace Librinfo\EmailCRMBundle\Services\SwiftMailer\Spool;
 
 use Librinfo\EmailBundle\Services\SwiftMailer\Spool\DbSpool as BaseDbSpool;
@@ -8,15 +18,15 @@ use Librinfo\EmailBundle\Services\InlineAttachments;
 use Librinfo\EmailCRMBundle\Services\SwiftMailer\DecoratorPlugin\Replacements;
 
 /**
- * Class DbSpool
+ * Class DbSpool.
  */
 class DbSpool extends BaseDbSpool
-{   
+{
     /**
      * Sends messages using the given transport instance.
      *
      * @param \Swift_Transport $transport         A transport instance
-     * @param string[]        &$failedRecipients An array of failures by-reference
+     * @param string[]         &$failedRecipients An array of failures by-reference
      *
      * @return int The number of sent emails
      */
@@ -24,20 +34,18 @@ class DbSpool extends BaseDbSpool
     {
         $replacements = new Replacements($this->manager);
         $decorator = new \Swift_Plugins_DecoratorPlugin($replacements);
-        
+
         $transport->registerPlugin($decorator);
-        
-        if (!$transport->isStarted())
-        {
+
+        if (!$transport->isStarted()) {
             $transport->start();
         }
 
         $emails = $this->repository->findBy(
-                array("status" => SpoolStatus::STATUS_READY, "environment" => $this->environment), null
+                array('status' => SpoolStatus::STATUS_READY, 'environment' => $this->environment), null
         );
 
-        if (!count($emails))
-        {
+        if (!count($emails)) {
             return 0;
         }
 
@@ -45,8 +53,7 @@ class DbSpool extends BaseDbSpool
         $count = 0;
         $time = time();
 
-        foreach ($emails as $email)
-        {
+        foreach ($emails as $email) {
             $email->setStatus(SpoolStatus::STATUS_PROCESSING);
 
             $this->updateEmail($email);
@@ -54,53 +61,49 @@ class DbSpool extends BaseDbSpool
             $message = unserialize(base64_decode($email->getMessage()));
 
             $addresses = explode(';', $email->getFieldTo());
-            
-            foreach ( $email->getPositions() as $position )
-            {
+
+            foreach ($email->getPositions() as $position) {
                 $name = sprintf(
                         '%s %s', $position->getIndividual()->getFirstName(), $position->getIndividual()->getName()
                 );
 
-                if ( $position->getEmail() )
+                if ($position->getEmail()) {
                     $addresses[$name] = $position->getEmail();
-                else if ( $position->getIndividual()->getEmail() )
+                } elseif ($position->getIndividual()->getEmail()) {
                     $addresses[$name] = $position->getIndividual->getEmail();
-                else
+                } else {
                     continue;
+                }
             }
-                
-            foreach ( $email->getOrganisms() as $organism )
-                if ( $organism->getEmail() )
-                {
-                    if( $organism->isIndividual() )
-                    {
+
+            foreach ($email->getOrganisms() as $organism) {
+                if ($organism->getEmail()) {
+                    if ($organism->isIndividual()) {
                         $name = sprintf(
                             '%s %s', $organism->getFirstName(), $organism->getName()
                         );
-                        
+
                         $addresses[$name] = $organism->getEmail();
-                    }else
-                    {
+                    } else {
                         $addresses[$organism->getName()] = $organism->getEmail();
                     }
                 }
-                    
-            foreach ($addresses as $address)
-            {               
+            }
+
+            foreach ($addresses as $address) {
                 $message->setTo(trim($address));
                 $content = $email->getContent();
-                
-                if ($email->getTracking())
-                {
+
+                if ($email->getTracking()) {
                     $tracker = new Tracking($this->router);
                     $content = $tracker->addTracking($content, $address, $email->getId());
                 }
-                
+
                 $attachmentsHandler = new InlineAttachments();
                 $content = $attachmentsHandler->handle($content, $message);
 
                 $message->setBody($content);
-                
+
                 try {
                     $count += $transport->send($message, $failedRecipients);
                     sleep($this->pauseTime);
@@ -114,11 +117,11 @@ class DbSpool extends BaseDbSpool
 
             $this->updateEmail($email);
 
-            if ($this->getTimeLimit() && (time() - $time) >= $this->getTimeLimit())
-            {
+            if ($this->getTimeLimit() && (time() - $time) >= $this->getTimeLimit()) {
                 break;
             }
         }
+
         return $count;
     }
 }
