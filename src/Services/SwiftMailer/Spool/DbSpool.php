@@ -60,7 +60,7 @@ class DbSpool extends BaseDbSpool
 
             $message = unserialize(base64_decode($email->getMessage()));
 
-            $addresses = explode(';', $email->getFieldTo());
+            $addresses = $email->getFieldToAsArray();
 
             foreach ($email->getPositions() as $position) {
                 $name = sprintf(
@@ -68,9 +68,9 @@ class DbSpool extends BaseDbSpool
                 );
 
                 if ($position->getEmail()) {
-                    $addresses[$name] = $position->getEmail();
+                    $addresses[$position->getEmail()] = $name;
                 } elseif ($position->getIndividual()->getEmail()) {
-                    $addresses[$name] = $position->getIndividual->getEmail();
+                    $addresses[$position->getIndividual->getEmail()] = $name;
                 } else {
                     continue;
                 }
@@ -83,9 +83,23 @@ class DbSpool extends BaseDbSpool
                             '%s %s', $organism->getFirstName(), $organism->getName()
                         );
 
-                        $addresses[$name] = $organism->getEmail();
+                        $addresses[$organism->getEmail()] = $name;
                     } else {
-                        $addresses[$organism->getName()] = $organism->getEmail();
+                        $addresses[$organism->getEmail()] = $organism->getName();
+                    }
+                }
+            }
+
+            foreach ($email->getCircles() as $circle) {
+                foreach ($circle->getOrganisms() as $organism) {
+                    if ($organism->isIndividual()) {
+                        $name = sprintf(
+                            '%s %s', $organism->getFirstName(), $organism->getName()
+                        );
+
+                        $addresses[$organism->getEmail()] = $name;
+                    } else {
+                        $addresses[$organism->getEmail()] = $organism->getName();
                     }
                 }
             }

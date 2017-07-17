@@ -40,9 +40,9 @@ class Sender extends BaseSender
             );
 
             if ($position->getEmail()) {
-                $addresses[$name] = $position->getEmail();
+                $addresses[$position->getEmail()] = $name;
             } elseif ($position->getIndividual()->getEmail()) {
-                $addresses[$name] = $position->getIndividual->getEmail();
+                $addresses[$position->getIndividual->getEmail()] = $name;
             } else {
                 continue;
             }
@@ -59,9 +59,9 @@ class Sender extends BaseSender
                         '%s %s', $organism->getFirstName(), $organism->getName()
                     );
 
-                    $addresses[$name] = $organism->getEmail();
+                    $addresses[$organism->getEmail()] = $name;
                 } else {
-                    $addresses[$organism->getName()] = $organism->getEmail();
+                    $addresses[$organism->getEmail()] = $organism->getName();
                 }
             }
         }
@@ -77,15 +77,14 @@ class Sender extends BaseSender
                         '%s %s', $organism->getFirstName(), $organism->getName()
                     );
 
-                    $addresses[$name] = $organism->getEmail();
+                    $addresses[$organism->getEmail()] = $name;
                 } else {
-                    $addresses[$organism->getName()] = $organism->getEmail();
+                    $addresses[$organism->getEmail()] = $organism->getName();
                 }
             }
         }
 
         $this->needsSpool = (count($addresses) > 1);
-        // dump($addresses,$this->email);die;
 
         if ($this->email->getIsTest()) {
             return $this->directSend($this->email->getTestAddressAsArray());
