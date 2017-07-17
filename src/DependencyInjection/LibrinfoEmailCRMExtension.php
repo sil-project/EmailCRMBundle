@@ -25,7 +25,7 @@ class LibrinfoEmailCRMExtension extends BlastCoreExtension
     public function loadSecurity(ContainerBuilder $container)
     {
         if (class_exists('\Librinfo\SecurityBundle\Configurator\SecurityConfigurator')) {
-            \Librinfo\SecurityBundle\Configurator\SecurityConfigurator::getInstance($container)->loadSecurityYml(__DIR__.'/../Resources/config/security.yml');
+            \Librinfo\SecurityBundle\Configurator\SecurityConfigurator::getInstance($container)->loadSecurityYml(__DIR__ . '/../Resources/config/security.yml');
         }
     }
 }
