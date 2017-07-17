@@ -1,11 +1,11 @@
 <?php
 
 /*
- * This file is part of the Blast Project package.
+ * This file is part of the Lisem Project.
  *
  * Copyright (C) 2015-2017 Libre Informatique
  *
- * This file is licenced under the GNU LGPL v3.
+ * This file is licenced under the GNU GPL v3.
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
@@ -28,61 +28,8 @@ class Sender extends BaseSender
     {
         $this->email = $email;
         $this->attachments = $email->getAttachments();
-        $addresses = $this->email->getFieldToAsArray();
 
-        if ($email->getPositions() === null) {
-            $email->initPositions();
-        }
-
-        foreach ($email->getPositions() as $position) {
-            $name = sprintf(
-                '%s %s', $position->getIndividual()->getFirstName(), $position->getIndividual()->getName()
-            );
-
-            if ($position->getEmail()) {
-                $addresses[$position->getEmail()] = $name;
-            } elseif ($position->getIndividual()->getEmail()) {
-                $addresses[$position->getIndividual->getEmail()] = $name;
-            } else {
-                continue;
-            }
-        }
-
-        if ($email->getOrganisms() === null) {
-            $email->initOrganisms();
-        }
-
-        foreach ($email->getOrganisms() as $organism) {
-            if ($organism->getEmail()) {
-                if ($organism->isIndividual()) {
-                    $name = sprintf(
-                        '%s %s', $organism->getFirstName(), $organism->getName()
-                    );
-
-                    $addresses[$organism->getEmail()] = $name;
-                } else {
-                    $addresses[$organism->getEmail()] = $organism->getName();
-                }
-            }
-        }
-
-        if ($email->getCircles() === null) {
-            $email->initCircles();
-        }
-
-        foreach ($email->getCircles() as $circle) {
-            foreach ($circle->getOrganisms() as $organism) {
-                if ($organism->isIndividual()) {
-                    $name = sprintf(
-                        '%s %s', $organism->getFirstName(), $organism->getName()
-                    );
-
-                    $addresses[$organism->getEmail()] = $name;
-                } else {
-                    $addresses[$organism->getEmail()] = $organism->getName();
-                }
-            }
-        }
+        $addresses = $this->addressManager->manageAddresses($this->email);
 
         $this->needsSpool = (count($addresses) > 1);
 

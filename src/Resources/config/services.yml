@@ -7,6 +7,10 @@ services:
             - '@librinfo_email.inline_attachments'
             - '@swiftmailer.mailer.direct_mailer'
             - '@swiftmailer.mailer.spool_mailer'
+            - '@librinfo.email.address_manager'
+
+    librinfo.email.address_manager:
+        class: Librinfo\EmailCRMBundle\Services\AddressManager
 
     librinfo_email_crm.replacements:
         class: Librinfo\EmailCRMBundle\Services\SwiftMailer\DecoratorPlugin\Replacements
@@ -18,3 +22,4 @@ services:
             - '@router'
             - '@doctrine.orm.entity_manager'
             - '%kernel.environment%'
+            - '@librinfo.email.address_manager'
