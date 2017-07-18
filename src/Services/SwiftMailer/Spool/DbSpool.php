@@ -1,11 +1,11 @@
 <?php
 
 /*
- * This file is part of the Blast Project package.
+ * This file is part of the Lisem Project.
  *
  * Copyright (C) 2015-2017 Libre Informatique
  *
- * This file is licenced under the GNU LGPL v3.
+ * This file is licenced under the GNU GPL v3.
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
@@ -16,12 +16,34 @@ use Librinfo\EmailBundle\Services\SwiftMailer\Spool\DbSpool as BaseDbSpool;
 use Librinfo\EmailBundle\Services\SwiftMailer\Spool\SpoolStatus;
 use Librinfo\EmailBundle\Services\InlineAttachments;
 use Librinfo\EmailCRMBundle\Services\SwiftMailer\DecoratorPlugin\Replacements;
+use Librinfo\EmailCRMBundle\Services\AddressManager;
+use Doctrine\ORM\EntityManager;
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
 
 /**
  * Class DbSpool.
  */
 class DbSpool extends BaseDbSpool
 {
+    /**
+     * @var AddressManager
+     */
+    protected $addressManager;
+
+    /**
+     * @param Router        $router
+     * @param EntityManager $manager
+     * @param string        $environment
+     */
+    public function __construct(Router $router, EntityManager $manager, $environment, $addressManager)
+    {
+        $this->router = $router;
+        $this->manager = $manager;
+        $this->environment = $environment;
+        $this->repository = $this->manager->getRepository('LibrinfoEmailBundle:Email');
+        $this->addressManager = $addressManager;
+    }
+
     /**
      * Sends messages using the given transport instance.
      *
@@ -60,37 +82,9 @@ class DbSpool extends BaseDbSpool
 
             $message = unserialize(base64_decode($email->getMessage()));
 
-            $addresses = explode(';', $email->getFieldTo());
+            $addresses = $this->addressManager->manageAddresses($email);
 
-            foreach ($email->getPositions() as $position) {
-                $name = sprintf(
-                        '%s %s', $position->getIndividual()->getFirstName(), $position->getIndividual()->getName()
-                );
-
-                if ($position->getEmail()) {
-                    $addresses[$name] = $position->getEmail();
-                } elseif ($position->getIndividual()->getEmail()) {
-                    $addresses[$name] = $position->getIndividual->getEmail();
-                } else {
-                    continue;
-                }
-            }
-
-            foreach ($email->getOrganisms() as $organism) {
-                if ($organism->getEmail()) {
-                    if ($organism->isIndividual()) {
-                        $name = sprintf(
-                            '%s %s', $organism->getFirstName(), $organism->getName()
-                        );
-
-                        $addresses[$name] = $organism->getEmail();
-                    } else {
-                        $addresses[$organism->getName()] = $organism->getEmail();
-                    }
-                }
-            }
-
-            foreach ($addresses as $address) {
+            foreach ($addresses as $address => $name) {
                 $message->setTo(trim($address));
                 $content = $email->getContent();
 
@@ -123,5 +117,17 @@ class DbSpool extends BaseDbSpool
         }
 
         return $count;
+    }
+
+    /**
+     * @param AddressManager addressManager
+     *
+     * @return self
+     */
+    public function setAddressManager(AddressManager $addressManager)
+    {
+        $this->addressManager = $addressManager;
+
+        return $this;
     }
 }

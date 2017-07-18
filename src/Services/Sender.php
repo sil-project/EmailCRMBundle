@@ -1,11 +1,11 @@
 <?php
 
 /*
- * This file is part of the Blast Project package.
+ * This file is part of the Lisem Project.
  *
  * Copyright (C) 2015-2017 Libre Informatique
  *
- * This file is licenced under the GNU LGPL v3.
+ * This file is licenced under the GNU GPL v3.
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
@@ -28,48 +28,13 @@ class Sender extends BaseSender
     {
         $this->email = $email;
         $this->attachments = $email->getAttachments();
-        $addresses = explode(';', $this->email->getFieldTo());
 
-        if ($email->getPositions() === null) {
-            $email->initPositions();
-        }
+        $addresses = $this->addressManager->manageAddresses($this->email);
 
-        foreach ($email->getPositions() as $position) {
-            $name = sprintf(
-                '%s %s', $position->getIndividual()->getFirstName(), $position->getIndividual()->getName()
-            );
-
-            if ($position->getEmail()) {
-                $addresses[$name] = $position->getEmail();
-            } elseif ($position->getIndividual()->getEmail()) {
-                $addresses[$name] = $position->getIndividual->getEmail();
-            } else {
-                continue;
-            }
-        }
-
-        if ($email->getOrganisms() === null) {
-            $email->initOrganisms();
-        }
-
-        foreach ($email->getOrganisms() as $organism) {
-            if ($organism->getEmail()) {
-                if ($organism->isIndividual()) {
-                    $name = sprintf(
-                        '%s %s', $organism->getFirstName(), $organism->getName()
-                    );
-
-                    $addresses[$name] = $organism->getEmail();
-                } else {
-                    $addresses[$organism->getName()] = $organism->getEmail();
-                }
-            }
-        }
-
-        $this->needsSpool = count($addresses) > 1;
+        $this->needsSpool = (count($addresses) > 1);
 
         if ($this->email->getIsTest()) {
-            return $this->directSend($this->email->getTestAddress());
+            return $this->directSend($this->email->getTestAddressAsArray());
         }
 
         if ($this->needsSpool) {
