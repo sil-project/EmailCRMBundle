@@ -12,8 +12,8 @@
 
 namespace Librinfo\EmailCRMBundle\Services;
 
-
 use Librinfo\EmailBundle\Services\AddressManager as BaseAddressManager;
+
 /**
  * AddressManager is used to manage addresses as service (librinfo.email.address_manager).
  */
