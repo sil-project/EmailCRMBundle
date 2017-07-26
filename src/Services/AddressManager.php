@@ -28,6 +28,7 @@ class AddressManager extends BaseAddressManager
      */
     public function manageAddresses($mail)
     {
+
         $addresses = parent::manageAddresses($mail);
 
         if ($mail->getPositions() === null) {
