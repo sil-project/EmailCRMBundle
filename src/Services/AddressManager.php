@@ -12,10 +12,12 @@
 
 namespace Librinfo\EmailCRMBundle\Services;
 
+use Librinfo\EmailBundle\Services\AddressManager as BaseAddressManager;
+
 /**
  * AddressManager is used to manage addresses as service (librinfo.email.address_manager).
  */
-class AddressManager
+class AddressManager extends BaseAddressManager
 {
     /**
      * manageAddresses.
@@ -26,7 +28,8 @@ class AddressManager
      */
     public function manageAddresses($mail)
     {
-        $addresses = [];
+
+        $addresses = parent::manageAddresses($mail);
 
         if ($mail->getPositions() === null) {
             $mail->initPositions();
