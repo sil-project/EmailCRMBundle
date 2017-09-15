@@ -3,18 +3,18 @@
     "type": "symfony-bundle",
     "description": "CRM Bundle for Symfony with Email management",
     "require": {
-	"php": ">=5.6",
-	"symfony/symfony": ">=3.2",
-	"blast-project/core-bundle" : ">=0.4",
-        "blast-project/base-entities-bundle"  : ">=0.4",
-	"blast-project/outer-extension-bundle": ">=0.4",
-        "blast-project/utils-bundle": ">=0.4",
-        "libre-informatique/media-bundle": ">=0.4",
-        "libre-informatique/email-bundle": ">=0.4",
-        "libre-informatique/crm-bundle": ">=0.4"
+        "php": ">=5.6",
+        "symfony/symfony": ">=3.2",
+        "blast-project/core-bundle": "self.version",
+        "blast-project/base-entities-bundle": "self.version",
+        "blast-project/outer-extension-bundle": "self.version",
+        "blast-project/utils-bundle": "self.version",
+        "libre-informatique/media-bundle": "self.version",
+        "libre-informatique/email-bundle": "self.version",
+        "libre-informatique/crm-bundle": "self.version"
     },
     "require-dev": {
-	"symfony/phpunit-bridge": ">=3.2"
+        "symfony/phpunit-bridge": ">=3.2"
     },
     "license": "LGPL-3.0",
     "keywords": [

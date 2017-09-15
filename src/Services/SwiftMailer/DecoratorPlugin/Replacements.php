@@ -41,8 +41,8 @@ class Replacements implements \Swift_Plugins_Decorator_Replacements
             if ($organism->isIndividual()) {
                 return array(
                     '{prenom}' => $organism->getFirstName(),
-                    '{nom}' => $organism->getLastName(),
-                    '{titre}' => $organism->getTitle(),
+                    '{nom}'    => $organism->getLastName(),
+                    '{titre}'  => $organism->getTitle(),
                 );
             } else {
                 return array(
