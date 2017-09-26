@@ -1,5 +1,7 @@
+librinfo:
+    emailcrmbundle: ~
 
-'Users': 'Utilisateurs'
-'Groups': 'Groupes'
-'Positions': 'Fonctions'
-'Organisms': 'Tiers'
+'Users.old': 'Utilisateurs'
+'Groups.old': 'Groupes'
+'Positions.old': 'Fonctions'
+'Organisms.old': 'Tiers'
