@@ -2,40 +2,39 @@
 
 librinfo:
     emailcrmbundle:
-        admin:
-            organism: ~
         organism:
             breadcrumb:
-                organism_create: 'Nouveau Tiers'
-                organism_list: 'Liste des tiers'
+                organism_create: Nouveau Tiers
+                organism_list: Liste des tiers
             form:
-                active: 'Actif'
-                alert: 'Alerte'
-                catalogue_send_mean: 'Méthode d''envoi'
-                catalogue_sent: 'Catalogue envoyé'
-                catalogue_type: 'Type de catalogue'
-                category: 'Catégorie de Tiers'
-                circles: 'Groupes'
-                createdat: ~
-                createdby: ~
+                active: Actif
+                alert: Alerte
+                catalogue_send_mean: Méthode d'envoi
+                #'
+                catalogue_sent: Catalogue envoyé
+                catalogue_type: Type de catalogue
+                category: Catégorie de Tiers
+                circles: Groupes
+                createdat: Créé le
+                createdby: Crée par
                 description: Description
-                email: 'Email'
-                emailnonewsletter: ~
-                emailnpai: ~
-                first_catalogue_sent_date: 'Date premier envoi catalogue'
-                firstname: 'Prénom'
-                iban: 'RIB (IBAN)'
-                iscustomer: ~
-                issupplier: ~
-                last_catalogue_sent_date: 'Date dernier envoi catalogue'
-                lastname: 'Nom de famille'
-                name: 'Nom'
-                source: 'Source'
-                title: 'Titre / civilité'
-                updatedat: ~
-                updatedby: ~
-                url: 'Site web'
-                vat: 'N° TVA'
+                email: Email
+                emailnonewsletter: Pas de Newsletter
+                emailnpai: Mauvais courriel
+                first_catalogue_sent_date: Date premier envoi catalogue
+                firstname: Prénom
+                iban: RIB (IBAN)
+                iscustomer: Client
+                issupplier: Fournisseur
+                last_catalogue_sent_date: Date dernier envoi catalogue
+                lastname: Nom de famille
+                name: Nom
+                source: Source
+                title: Titre / civilité
+                updatedat: Modifié le
+                updatedby: Modifié par
+                url: Site web
+                vat: N° TVA
 
 
 'Users': 'Utilisateurs'
