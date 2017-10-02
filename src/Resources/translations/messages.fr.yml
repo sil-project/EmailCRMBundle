@@ -1,7 +1,44 @@
-librinfo:
-    emailcrmbundle: ~
 
-'Users.old': 'Utilisateurs'
-'Groups.old': 'Groupes'
-'Positions.old': 'Fonctions'
-'Organisms.old': 'Tiers'
+
+librinfo:
+    emailcrmbundle:
+        admin:
+            organism: ~
+        organism:
+            breadcrumb:
+                organism_create: 'Nouveau Tiers'
+                organism_list: 'Liste des tiers'
+            form:
+                active: 'Actif'
+                alert: 'Alerte'
+                catalogue_send_mean: 'Méthode d''envoi'
+                catalogue_sent: 'Catalogue envoyé'
+                catalogue_type: 'Type de catalogue'
+                category: 'Catégorie de Tiers'
+                circles: 'Groupes'
+                createdat: ~
+                createdby: ~
+                description: Description
+                email: 'Email'
+                emailnonewsletter: ~
+                emailnpai: ~
+                first_catalogue_sent_date: 'Date premier envoi catalogue'
+                firstname: 'Prénom'
+                iban: 'RIB (IBAN)'
+                iscustomer: ~
+                issupplier: ~
+                last_catalogue_sent_date: 'Date dernier envoi catalogue'
+                lastname: 'Nom de famille'
+                name: 'Nom'
+                source: 'Source'
+                title: 'Titre / civilité'
+                updatedat: ~
+                updatedby: ~
+                url: 'Site web'
+                vat: 'N° TVA'
+
+
+'Users': 'Utilisateurs'
+'Groups': 'Groupes'
+'Positions': 'Fonctions'
+'Organisms': 'Tiers'
