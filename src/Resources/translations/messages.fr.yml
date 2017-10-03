@@ -2,6 +2,9 @@
 
 librinfo:
     emailcrmbundle:
+        admin:
+            organism: Tiers
+        help: ?
         organism:
             breadcrumb:
                 organism_create: Nouveau Tiers
