@@ -3,7 +3,7 @@
 librinfo:
     emailcrmbundle:
         admin:
-            organism: Tiers
+            organism: Contact
             
         active: Actif
         alert: Alerte
