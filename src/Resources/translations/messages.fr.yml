@@ -4,40 +4,36 @@ librinfo:
     emailcrmbundle:
         admin:
             organism: Tiers
-        help: ?
-        organism:
-            breadcrumb:
-                organism_create: Nouveau Tiers
-                organism_list: Liste des tiers
-            form:
-                active: Actif
-                alert: Alerte
-                catalogue_send_mean: Méthode d'envoi
-                #'
-                catalogue_sent: Catalogue envoyé
-                catalogue_type: Type de catalogue
-                category: Catégorie de Tiers
-                circles: Groupes
-                createdat: Créé le
-                createdby: Crée par
-                description: Description
-                email: Email
-                emailnonewsletter: Pas de Newsletter
-                emailnpai: Mauvais courriel
-                first_catalogue_sent_date: Date premier envoi catalogue
-                firstname: Prénom
-                iban: RIB (IBAN)
-                iscustomer: Client
-                issupplier: Fournisseur
-                last_catalogue_sent_date: Date dernier envoi catalogue
-                lastname: Nom de famille
-                name: Nom
-                source: Source
-                title: Titre / civilité
-                updatedat: Modifié le
-                updatedby: Modifié par
-                url: Site web
-                vat: N° TVA
+            
+        active: Actif
+        alert: Alerte
+        catalogue_send_mean: 'Méthode d''envoi'
+        catalogue_sent: Catalogue envoyé
+        catalogue_type: Type de catalogue
+        category: Catégorie de Tiers
+        circles: Groupes
+        createdat: Créé le
+        createdby: Crée par
+        description: Description
+        email: Email
+        emailnonewsletter: Pas de Newsletter
+        emailnpai: Mauvais courriel
+        first_catalogue_sent_date: Date premier envoi catalogue
+        firstname: Prénom
+        iban: RIB (IBAN)
+        iscustomer: Client
+        issupplier: Fournisseur
+        last_catalogue_sent_date: Date dernier envoi catalogue
+        lastname: Nom de famille
+        name: Nom
+        organism_list: Liste des tiers
+        source: Source
+        title: Titre / civilité
+        updatedat: Modifié le
+        updatedby: Modifié par
+        url: Site web
+        vat: N° TVA
+        organism_create: Nouveau Tiers
 
 
 'Users': 'Utilisateurs'
