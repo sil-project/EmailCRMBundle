@@ -1,4 +1,9 @@
 services:
+
+    blast_core.label.strategy.librinfo_emailcrm:
+        class: Blast\CoreBundle\Translator\LibrinfoLabelTranslatorStrategy
+        arguments: ['Librinfo\EmailCRMBundle']
+
     librinfo_email.sender:
         class: Librinfo\EmailCRMBundle\Services\Sender
         arguments:
