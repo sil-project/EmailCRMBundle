@@ -41,6 +41,5 @@
         "psr-4": {
             "Librinfo\\EmailCRMBundle\\": "src/"
         }
-    },
-    "version": "0.6.4"
+    }
 }
