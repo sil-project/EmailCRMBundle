@@ -1,14 +1,5 @@
 # Change Log
 
-## [0.6.4](https://github.com/libre-informatique/EmailCRMBundle/tree/0.6.4) (2017-11-03)
-[Full Changelog](https://github.com/libre-informatique/EmailCRMBundle/compare/0.5.2...0.6.4)
-
-**Merged pull requests:**
-
-- Lisem fix & features [\#26](https://github.com/libre-informatique/EmailCRMBundle/pull/26) ([FanchTheSystem](https://github.com/FanchTheSystem))
-- DevKit updates for EmailCRMBundle [\#25](https://github.com/libre-informatique/EmailCRMBundle/pull/25) ([BlastCI](https://github.com/BlastCI))
-- DevKit updates for EmailCRMBundle [\#23](https://github.com/libre-informatique/EmailCRMBundle/pull/23) ([BlastCI](https://github.com/BlastCI))
-
 ## [0.5.2](https://github.com/libre-informatique/EmailCRMBundle/tree/0.5.2) (2017-10-19)
 [Full Changelog](https://github.com/libre-informatique/EmailCRMBundle/compare/0.5.1...0.5.2)
 
